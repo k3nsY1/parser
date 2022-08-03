@@ -1,3 +1,4 @@
+from dis import Instruction
 from bs4 import BeautifulSoup
 import requests
 
@@ -18,15 +19,23 @@ soup = BeautifulSoup(src, "lxml")
 # def main():
 #     get_names("active")
 
+# instructions= soup.find("span", itemprop="name")
+# try:
+#     method = str.replace(instructions.get_text(strip=True),". ",".")
+#     method = str.replace(method, ". ", ".")
+#     method = (str.replace(method, ".",".\n"))
+# except AttributeError:
+#     print(instructions)
 
 # all_products=soup.find_all(class_ ="active")
 # for item in all_products:
 #     print(item.text)
 # def get_names(a):
-all_targets = soup.find_all(class_ = "name")
+all_targets = soup.find(class_= "profuct_top_line").find("a").find_all("th")
 for names in all_targets:
     print(names.text)
-    print(names.href)
+#         name = soup.find(class_ = "")
+    # print(names.href)
     # for name in names:
     #     all_names = soup.find_all(class_ = "name")
     #     print(all_names.text)
